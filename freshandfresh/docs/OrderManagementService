@@ -1,0 +1,254 @@
+Description:
+------------
+This service is used to save/edit order details.
+
+URL:(POST)
+----
+http://localhost:9191/api/order/save
+
+INPUT:
+------
+{
+	"id":4,
+	"orderedUser":{"id":2},
+	"deliveryAddress":{"id":1},
+	"price":100,
+	"orderType":"Immediate",
+	"expectedDeliveryDate":"2019-07-31",
+	"expectedDeliveryTime":"21:30",
+	"customerRemarks":"Test Order",
+	"customerSatisfactionMark":5,
+	"orderDetails":[{"id":1,"item":{"id":1,"price":25},"price":50,"noOfUnit":2}],
+	"action":{"id":5},
+	"noOfContainerDispatched":"10",
+	"noOfContainerReceived":"8",
+	"amountReceived":"50",
+	"paymentMode":"Google Pay",
+	"deliveryUser":{"id":3},
+	"remarks":"Order Testing"
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Order saved successfully!!!",
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to view logged in person order details.If he/she is a customer, he/she can view his order.If he/she is a delivery person, he/she can view their delivery order.
+
+URL:(GET)
+----
+http://localhost:9191/api/order/view
+
+INPUT:
+------
+Not required.
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 4,
+            "orderedUser": {
+                "id": 2,
+                "firstName": "Sujith",
+                "lastName": "M",
+                "mobileNumber": "9677192398",
+                "username": "sujith",
+                "password": null,
+                "role": {
+                    "id": 1,
+                    "name": "ROLE_USER"
+                },
+                "profilePic": null,
+                "token": null,
+                "active": true
+            },
+            "deliveryAddress": {
+                "id": 1,
+                "apartmentName": "KSR",
+                "blockName": "B",
+                "doorNumber": "108",
+                "userId": 1,
+                "active": false
+            },
+            "price": 0.0,
+            "orderType": "Immediate",
+            "receivedDate": null,
+            "expectedDeliveryDate": "2019-07-31",
+            "expectedDeliveryTime": "21:30",
+            "customerRemarks": "Test Order",
+            "customerSatisfactionMark": 5,
+            "noOfContainerDispatched": 10,
+            "noOfContainerReceived": 8,
+            "amountReceived": 50.0,
+            "paymentMode": "Google Pay",
+            "action": {
+                "id": 6,
+                "name": "Dispatch",
+                "status": "Order Dispatched"
+            },
+            "remarks": "Order Testing",
+            "deliveryUser": {
+                "id": 3,
+                "firstName": "Vinoth",
+                "lastName": "P",
+                "mobileNumber": "9677192399",
+                "username": "vinoth",
+                "password": null,
+                "role": {
+                    "id": 2,
+                    "name": "ROLE_DELIVERY"
+                },
+                "profilePic": null,
+                "token": null,
+                "active": true
+            },
+            "orderDetails": [
+                {
+                    "id": 1,
+                    "item": {
+                        "id": 1,
+                        "name": "Idly",
+                        "image": null,
+                        "availableFrom": "9 AM",
+                        "avilableTo": "12 PM",
+                        "unitRange": "1 piece",
+                        "price": 10.0,
+                        "active": false,
+                        "available": true
+                    },
+                    "price": 50.0,
+                    "noOfUnit": 2
+                }
+            ],
+            "updatedDate": null,
+            "actions": []
+        }
+    ],
+    "message": null,
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to view all the orders by admin.
+
+URL:(GET)
+----
+http://localhost:9191/api/order/viewall
+
+INPUT:
+------
+Not required.
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 4,
+            "orderedUser": {
+                "id": 2,
+                "firstName": "Sujith",
+                "lastName": "M",
+                "mobileNumber": "9677192398",
+                "username": "sujith",
+                "password": null,
+                "role": {
+                    "id": 1,
+                    "name": "ROLE_USER"
+                },
+                "profilePic": null,
+                "token": null,
+                "active": true
+            },
+            "deliveryAddress": {
+                "id": 1,
+                "apartmentName": "KSR",
+                "blockName": "B",
+                "doorNumber": "108",
+                "userId": 1,
+                "active": false
+            },
+            "price": 0.0,
+            "orderType": "Immediate",
+            "receivedDate": null,
+            "expectedDeliveryDate": "2019-07-31",
+            "expectedDeliveryTime": "21:30",
+            "customerRemarks": "Test Order",
+            "customerSatisfactionMark": 5,
+            "noOfContainerDispatched": 10,
+            "noOfContainerReceived": 8,
+            "amountReceived": 50.0,
+            "paymentMode": "Google Pay",
+            "action": {
+                "id": 6,
+                "name": "Dispatch",
+                "status": "Order Dispatched"
+            },
+            "remarks": "Order Testing",
+            "deliveryUser": {
+                "id": 3,
+                "firstName": "Vinoth",
+                "lastName": "P",
+                "mobileNumber": "9677192399",
+                "username": "vinoth",
+                "password": null,
+                "role": {
+                    "id": 2,
+                    "name": "ROLE_DELIVERY"
+                },
+                "profilePic": null,
+                "token": null,
+                "active": true
+            },
+            "orderDetails": [
+                {
+                    "id": 1,
+                    "item": {
+                        "id": 1,
+                        "name": "Idly",
+                        "image": null,
+                        "availableFrom": "9 AM",
+                        "avilableTo": "12 PM",
+                        "unitRange": "1 piece",
+                        "price": 10.0,
+                        "active": false,
+                        "available": true
+                    },
+                    "price": 50.0,
+                    "noOfUnit": 2
+                }
+            ],
+            "updatedDate": null,
+            "actions": [
+                {
+                    "id": 3,
+                    "name": "Accept",
+                    "status": "Order Accepted"
+                },
+                {
+                    "id": 4,
+                    "name": "Reject",
+                    "status": "Order Rejected"
+                },
+                {
+                    "id": 5,
+                    "name": "Assign",
+                    "status": "Order Assigned"
+                }
+            ]
+        }
+    ],
+    "message": null,
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+
+

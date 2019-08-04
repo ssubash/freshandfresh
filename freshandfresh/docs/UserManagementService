@@ -1,0 +1,309 @@
+Description:
+-----------
+This service is used for customer sign up through mobile phone.
+
+URL : (POST)
+-----
+http://localhost:9191/api/user/auth/signup
+
+INPUT : 
+-------
+{
+	"firstName":"Subashchandrabose",
+	"lastName":"S",
+	"mobileNumber":9677192397,
+	"username":"subashs",
+	"password":"subashs"
+}
+OUTPUT :
+--------
+{
+    "data": null,
+    "message": "User registered successfully!!!",
+    "status": true
+}
+------------------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used for user login.
+
+URL:(POST)
+----
+http://localhost:9191/api/user/auth/signin
+
+INPUT:
+------
+{
+	"username":"subashs",
+	"password":"subashs"
+}
+
+OUTPUT:
+-------
+{
+    "data": {
+        "id": 1,
+        "firstName": "Subashchandrabose",
+        "lastName": "S",
+        "mobileNumber": "9677192397",
+        "username": "subashs",
+        "password": null,
+        "role": {
+            "id": 1,
+            "name": "ROLE_USER"
+        },
+        "profilePic": null,
+        "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWJhc2hzIiwiaWF0IjoxNTY0NDE3MDQ4LCJleHAiOjE1NjQ0MTcxMzV9.b0HQRW1ApejA4w6YiOQlr_ur_NxpkWhHzAsm6xLWuW0UQ7rGPmDwPkVWGw4tt93KvidzAa6TiMqv6Vkeg9iCIQ",
+        "active": true
+    },
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to get all roles to display drop down in user registration form.
+
+URL:(GET)
+----
+http://localhost:9191/api/user/role/read
+
+INPUT:
+------
+Not required.
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "ROLE_USER"
+        },
+        {
+            "id": 2,
+            "name": "ROLE_DELIVERY"
+        },
+        {
+            "id": 3,
+            "name": "ROLE_ADMIN"
+        }
+    ],
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to register and update details of user by admin.
+
+URL:(POST)
+----
+http://localhost:9191/api/user/save
+
+INPUT:
+------
+{
+"id":0,
+"firstName":"Sujith",
+"lastName":"M",
+"mobileNumber":9677192398,
+"userName":"sujith",
+"password":"sujith",
+"isActive":true,
+"profilePic":null,
+"role":{"id":2}
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "User details saved successfully!!!",
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to get all registered user details to display in grid.
+
+URL:(GET)
+----
+http://localhost:9191/api/user/read
+
+INPUT:
+------
+No input required.
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 1,
+            "firstName": "Subashchandrabose",
+            "lastName": "S",
+            "mobileNumber": "9677192397",
+            "username": "subashs",
+            "password": null,
+            "role": {
+                "id": 3,
+                "name": "ROLE_ADMIN"
+            },
+            "profilePic": null,
+            "token": null,
+            "active": true
+        },
+        {
+            "id": 2,
+            "firstName": "Sujith",
+            "lastName": "M",
+            "mobileNumber": "9677192398",
+            "username": "sujith",
+            "password": null,
+            "role": {
+                "id": 2,
+                "name": "ROLE_DELIVERY"
+            },
+            "profilePic": null,
+            "token": null,
+            "active": true
+        }
+    ],
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to activate/deactivate user.
+
+URL:(POST)
+----
+http://localhost:9191/api/user/update
+
+INPUT:
+------
+{
+	"id":2,
+	"active":false
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "User is activated successfully!!!",
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to save address of the user.
+
+URL:(POST)
+----
+http://localhost:9191/api/user/address/save
+
+INPUT:
+------
+{
+"id":0,
+"apartmentName":"KSR",
+"blockName":"B",
+"doorNumber":"108",
+"userId":1,
+"active":true
+}
+
+OUTPUT:
+-------
+{
+    "data": "Address saved successfully!!!",
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to read address of the user.
+
+URL:(GET)
+----
+http://localhost:9191/api/user/address/read
+
+INPUT:
+------
+userId = 1 //Query parameter
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 1,
+            "apartmentName": "KSR",
+            "blockName": "B",
+            "doorNumber": "108",
+            "userId": 1,
+            "active": true
+        }
+    ],
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to deactivate address of the user.
+
+URL:(POST)
+http://localhost:9191/api/user/address/delete
+
+INPUT:
+------
+1 //addressid in plain text
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Address is deleted successfully!!!",
+    "status": true
+}
+------------------------------------------------------------------------------------------
+Description:
+-----------
+This service is used to load all delivery users.
+
+URL:(GET)
+----
+http://localhost:9191/api/user/delivery/load
+
+INPUT:
+------
+No input required.
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 2,
+            "firstName": "Sujith",
+            "lastName": "M",
+            "mobileNumber": "9677192398",
+            "username": "sujith",
+            "password": null,
+            "role": {
+                "id": 2,
+                "name": "ROLE_DELIVERY"
+            },
+            "profilePic": null,
+            "token": null,
+            "active": true
+        }
+    ],
+    "message": null,
+    "status": true
+}
+------------------------------------------------------------------------------------------

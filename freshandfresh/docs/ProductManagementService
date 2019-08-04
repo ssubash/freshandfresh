@@ -1,0 +1,272 @@
+Description:
+------------
+This service is used to save/edit product category name.
+
+URL:(POST)
+----
+http://localhost:9191/api/product/category/save
+
+INPUT:
+------
+{
+	"id":0,
+	"name":"Breakfast",
+	"active":"true"
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Category saved successfully!!!",
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to get all product category and items.
+
+URL:(GET)
+----
+http://localhost:9191/api/product/category/readall
+
+INPUT:
+------
+Not required
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "items": [
+                {
+                    "id": 1,
+                    "name": "Idly",
+                    "image": null,
+                    "availableFrom": "9 AM",
+                    "avilableTo": "12 PM",
+                    "unitRange": "1 piece",
+                    "price": 10.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": true
+        },
+        {
+            "id": 2,
+            "name": "Dinner",
+            "items": [
+                {
+                    "id": 2,
+                    "name": "Chapathi",
+                    "image": null,
+                    "availableFrom": "6 PM",
+                    "avilableTo": "11 PM",
+                    "unitRange": "1 piece",
+                    "price": 15.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": true
+        },
+        {
+            "id": 3,
+            "name": "Flour",
+            "items": [
+                {
+                    "id": 3,
+                    "name": "Weat",
+                    "image": null,
+                    "availableFrom": "9 AM",
+                    "avilableTo": "9 PM",
+                    "unitRange": "1 kg",
+                    "price": 100.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": false
+        }
+    ],
+    "message": null,
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to get product category and items by specified category id.
+
+URL:(GET)
+----
+http://localhost:9191/api/product/category/read?categoryId=2
+
+INPUT:
+------
+categoryId=2 // Query parameter
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 2,
+            "name": "Dinner",
+            "items": [
+                {
+                    "id": 2,
+                    "name": "Chapathi",
+                    "image": null,
+                    "availableFrom": "6 PM",
+                    "avilableTo": "11 PM",
+                    "unitRange": "1 piece",
+                    "price": 15.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": true
+        }
+    ],
+    "message": null,
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to get active product category and itemsto display in customer mobile application.
+
+URL:(GET)
+----
+http://localhost:9191/api/product/category/readactive
+
+INPUT:
+------
+Not required
+
+OUTPUT:
+-------
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "items": [
+                {
+                    "id": 1,
+                    "name": "Idly",
+                    "image": null,
+                    "availableFrom": "9 AM",
+                    "avilableTo": "12 PM",
+                    "unitRange": "1 piece",
+                    "price": 10.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": true
+        },
+        {
+            "id": 2,
+            "name": "Dinner",
+            "items": [
+                {
+                    "id": 2,
+                    "name": "Chapathi",
+                    "image": null,
+                    "availableFrom": "6 PM",
+                    "avilableTo": "11 PM",
+                    "unitRange": "1 piece",
+                    "price": 15.0,
+                    "available": true,
+                    "active": true
+                }
+            ],
+            "active": true
+        }
+    ],
+    "message": null,
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to activate/deactivate product category.
+
+URL:(POST)
+----
+http://localhost:9191/api/product/category/update
+
+INPUT:
+------
+{
+	"id":"3",
+	"active":false
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Category is deactivated successfully!!!",
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to save items under product category.
+
+URL:(POST)
+----
+http://localhost:9191/api/product/item/save
+
+INPUT:
+------
+{
+	"id",0,
+	"name":"Idly",
+	"image":null,
+	"available":true,
+	"active":true,
+	"availableFrom":"9 AM",
+	"avilableTo":"12 PM",
+	"unitRange":"1 piece",
+	"price":10.00,
+	"category":{"id":1}
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Item saved successfully!!!",
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Description:
+------------
+This service is used to activate/deactivate items.
+
+URL:(POST)
+----
+http://localhost:9191/api/product/item/read
+
+INPUT:
+------
+{
+	"id":1,
+	"active":false
+}
+
+OUTPUT:
+-------
+{
+    "data": null,
+    "message": "Item is deactivated successfully!!!",
+    "status": true
+}
+---------------------------------------------------------------------------------------------------------------------------------------
